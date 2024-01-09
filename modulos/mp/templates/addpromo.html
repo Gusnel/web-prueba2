@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/0.css">
+</head>
+<body>
+    <div class="wrapper">
+        <aside>
+          <header>
+            <h1 class="logo">ALL PROMO</h1>
+          </header>
+          <nav>
+            <ul>
+              <li>
+                <a href="/list/" class="btn btn-info">Todas las Mipymes</a>
+              </li>
+              <li>
+                <div class="buscador">
+                  <form action="{% url 'buscar_productos' %}" method="GET">{% csrf_token %}
+                    <h3>Buscador</h3>
+                    <label for="provincia">Provincia:</label>
+                    <select name="provincia" id="provincia">
+                        <option value="">Selecciona</option>
+                        <option value="Pinar del Rio">Pinar del Rio</option>
+                        <option value="La Habana">La Habana</option>
+                        <option value="Artemisa">Artemisa</option>
+                        <option value="Mayabeque">Mayabeque</option>
+                        <option value="Matanzas">Matanzas</option>
+                        <option value="Villa Clara">Villa Clara</option>
+                        <option value="Cienfuegos">Cienfuegos</option>
+                        <option value="Santi Spiritus">Santi Spiritus</option>
+                        <option value="Ciego de Avila">Ciego de Avila</option>
+                        <option value="Camaguey">Camaguey</option>
+                        <option value="Las Tunas">Las Tunas</option>
+                        <option value="Granma">Granma</option>
+                        <option value="Holguin">Holguin</option>
+                        <option value="Santiago de Cuba">Santiago de Cuba</option>
+                        <option value="Guantanamo">Guantanamo</option>
+                    </select>
+                
+                    <label for="nombre_producto">Nombre:</label>
+                    <input type="text" name="nombre_producto" id="nombre_producto">
+                
+                    <label for="min_precio">Precio mínimo:</label>
+                    <input type="number" name="min_precio" id="min_precio">
+                  
+                    <label for="max_precio">Precio máximo:</label>
+                    <input type="number" name="max_precio" id="max_precio">
+                  
+                    <button type="submit" class="btn-info">Buscar</button>
+                  </form>
+                </div>
+                
+              </li>
+              <li>
+                <label for="">Telefonos a contactar</label>
+                <p>55544333 o 55522333</p>
+              </li>
+              <li>
+                <form action="/addpromo/" method="POST">{% csrf_token %}
+                  <button type="submit" class="btn btn-info">Añadir Mipyme</button>
+                </form>
+              </li>
+            </ul>
+          </nav>
+          <footer class="texto-footer">
+            <p>Wanheda Coder</p>
+          </footer>
+        </aside>
+        <main>
+            <h2 class="subt">Añadir Mipyme</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/registrarMipyme/" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" id="txtnombre" name="txtnombre" class="form-control" placeholder="Nombre" maxlength="50">
+                        </div>
+                        <div class="form-group">
+                            <select name="provincia" id="provincia">
+                                <option value="">Provincia</option>
+                                <option value="Pinar del Rio">Pinar del Rio</option>
+                                <option value="La Habana">La Habana</option>
+                                <option value="Artemisa">Artemisa</option>
+                                <option value="Mayabeque">Mayabeque</option>
+                                <option value="Matanzas">Matanzas</option>
+                                <option value="Villa Clara">Villa Clara</option>
+                                <option value="Cienfuegos">Cienfuegos</option>
+                                <option value="Santi Spiritus">Santi Spiritus</option>
+                                <option value="Ciego de Avila">Ciego de Avila</option>
+                                <option value="Camaguey">Camaguey</option>
+                                <option value="Las Tunas">Las Tunas</option>
+                                <option value="Granma">Granma</option>
+                                <option value="Holguin">Holguin</option>
+                                <option value="Santiago de Cuba">Santiago de Cuba</option>
+                                <option value="Guantanamo">Guantanamo</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="txtubicacion" name="txtubicacion" class="form-control" placeholder="Ubicacion">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="txtnum" name="txtnum" class="form-control" placeholder="Número de teléfono">
+                        </div>
+                        <div class="form-group">
+                          <input type="text" id="txtdesc" name="txtdesc" class="form-control" placeholder="Descripcion">
+                      </div>
+                        <div class="form-group">
+                            <input type="file" id="txtimg" name="txtimg" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    
+      </div>
+    
+</body>
+</html>
